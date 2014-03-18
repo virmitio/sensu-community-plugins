@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 use_help ()
 {
