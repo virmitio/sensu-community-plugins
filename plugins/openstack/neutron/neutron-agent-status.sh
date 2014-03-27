@@ -35,7 +35,7 @@ else
     export AGENT_CMD="cat"
 fi
 
-neutron agent-list | $ZONE_CMD | awk -F ' *\\| *' -v RET_OK=0 -v RET_WARNING=1 -v RET_CRITICAL=2 -v RET_UNKNOWN=3 '
+neutron agent-list | $AGENT_CMD | awk -F ' *\\| *' -v RET_OK=0 -v RET_WARNING=1 -v RET_CRITICAL=2 -v RET_UNKNOWN=3 '
     BEGIN{enabled_count=0;retval=RET_OK}
     $6=="True"{enabled_count++;if ($5!=":-)") {print $4, "...", $3, "\"" $5 "\""; retval=RET_CRITICAL}}
     END{if (enabled_count<=0) {retval=RET_WARNING}; exit retval}'
